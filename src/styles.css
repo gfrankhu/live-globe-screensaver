@@ -1,0 +1,219 @@
+:root {
+  color: #e8fbff;
+  background: #020409;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 52%, rgba(26, 111, 141, 0.18), transparent 34%),
+    linear-gradient(180deg, #020409 0%, #050914 58%, #010207 100%);
+}
+
+.globeScene {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+}
+
+.globeScene:active {
+  cursor: grabbing;
+}
+
+.hud {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  display: grid;
+  gap: 16px;
+  width: min(420px, calc(100vw - 48px));
+  pointer-events: none;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  color: #f6feff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-shadow: 0 0 22px rgba(84, 242, 255, 0.32);
+}
+
+.brand svg {
+  color: var(--accent);
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--accent), transparent 40%));
+}
+
+.datasetSwitch {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 4px;
+  gap: 4px;
+  border: 1px solid rgba(178, 237, 255, 0.14);
+  background: rgba(3, 10, 18, 0.68);
+  backdrop-filter: blur(18px);
+  pointer-events: auto;
+}
+
+.datasetSwitch button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 0;
+  color: rgba(229, 251, 255, 0.68);
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.datasetSwitch button.active {
+  color: #ffffff;
+  background: color-mix(in srgb, var(--accent), transparent 78%);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent), transparent 44%);
+}
+
+.datasetSwitch svg {
+  flex: 0 0 auto;
+}
+
+.telemetry {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: min(420px, 100%);
+}
+
+.telemetry div,
+.feed {
+  border: 1px solid rgba(178, 237, 255, 0.13);
+  background: rgba(3, 10, 18, 0.58);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.28);
+}
+
+.telemetry div {
+  min-width: 0;
+  padding: 10px 12px;
+}
+
+.telemetry span {
+  display: block;
+  color: rgba(210, 238, 247, 0.52);
+  font-size: 11px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.telemetry strong {
+  display: block;
+  overflow: hidden;
+  margin-top: 5px;
+  color: #f5feff;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feed {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  display: grid;
+  gap: 1px;
+  width: min(420px, calc(100vw - 48px));
+  max-height: min(260px, calc(100vh - 48px));
+  overflow: hidden;
+}
+
+.feedRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 38px;
+  padding: 9px 12px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.feedRow span {
+  overflow: hidden;
+  color: rgba(229, 251, 255, 0.75);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feedRow strong {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .hud {
+    top: 14px;
+    left: 14px;
+    width: calc(100vw - 28px);
+  }
+
+  .datasetSwitch {
+    width: 100%;
+  }
+
+  .datasetSwitch button {
+    flex: 1;
+    min-width: 0;
+    padding: 0 8px;
+  }
+
+  .datasetSwitch span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .telemetry {
+    grid-template-columns: 1fr;
+  }
+
+  .feed {
+    right: 14px;
+    bottom: 14px;
+    width: calc(100vw - 28px);
+  }
+}

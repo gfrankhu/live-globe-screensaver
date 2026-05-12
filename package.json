@@ -1,0 +1,26 @@
+{
+  "name": "live-globe-screensaver",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fullscreen Electron globe visualizer with live data layers.",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "electron": "set ELECTRON_RUN_AS_NODE=&& electron .",
+    "start": "concurrently -k \"npm:dev\" \"wait-on http://127.0.0.1:5173 && set ELECTRON_RUN_AS_NODE=&& set VITE_DEV_SERVER_URL=http://127.0.0.1:5173&& electron .\"",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "lucide-react": "^0.562.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "three": "^0.182.0",
+    "vite": "^7.2.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^39.2.7",
+    "wait-on": "^9.0.3"
+  }
+}
